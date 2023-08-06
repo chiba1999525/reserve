@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
 
   #管理者
   devise_for :admins, controllers: {
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  
   root to: "homes#top"
+  resources :reservations
 
 end

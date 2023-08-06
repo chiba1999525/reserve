@@ -71,4 +71,9 @@ group :test do
   gem "webdrivers"
 end
 
+#カレンダー機能
+gem 'simple_calendar'
+gem 'sassc'
+
+#ログイン機能
 gem 'devise' #ファイルの一番下に追記
