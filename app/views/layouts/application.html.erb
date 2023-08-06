@@ -11,6 +11,61 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+     <ul class="nav_list">
+        <% if user_signed_in? %>
+          <!--ユーザー-->
+          <li class="nav_item">
+            <label class=menu>
+              <h3><%= link_to "Home",root_path, class: "menu-item" %></h3>
+            </label>
+          </li>
+
+          <li class="nav_item">
+            <label class=menu>
+              <h3><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "menu-item" %></h3>
+            </label>
+          </li>
+
+        <% elsif  admin_signed_in? %>
+            <!--管理者-->
+          <li class="nav_item">
+            <label class=menu>
+              <h3><%= link_to "Home",root_path, class: "menu-item" %></h3>
+            </label>
+          </li>
+
+
+          <li class="nav_item">
+            <label class=menu>
+              <h3><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "menu-item" %></h3>
+            </label>
+          </li>
+
+        <% else %>
+          <!--デフォルト-->
+          <li class="nav_item">
+            <label class=menu>
+              <h3><%= link_to "Home",root_path, class: "menu-item" %></h3>
+            </label>
+          </li>
+
+
+          <li class="nav_item">
+            <label class=menu>
+              <h3><%= link_to "ログイン",  new_user_session_path, class: "menu-item" %></h3>
+            </label>
+          </li>
+
+        <% end %>
+
+      </ul>
+  </header>
+
+  <hr>
+
+  <main><%= yield %></main>
+
+  <footer></footer>
   </body>
 </html>
